@@ -65,7 +65,9 @@ def main(args):
         print('Continue monitoring child tasks and updating DAMON targets')
         print('Press Ctrl+C to stop')
         while True:
-            _damon.add_childs_target(kdamonds)
+            err = _damon.add_childs_target(kdamonds)
+            if err is not None:
+                print(err)
             time.sleep(3)
 
 def set_argparser(parser):
